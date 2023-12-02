@@ -1,2 +1,2 @@
-id	username	digest	role
+id	username	password	role
 1	admin	scrypt:32768:8:1$sgLyNOqdaXSsjKYP$7777af71f0f01878ddc007e1c16a2a00d17e61829776264303703cec5af0f77eb10a3f0392c8958f02fbbb951e49fae20b65e7525cc39da7b2d4314c250599c7	admin
