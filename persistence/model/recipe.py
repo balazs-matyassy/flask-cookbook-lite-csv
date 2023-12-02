@@ -66,6 +66,9 @@ class Recipe:
 
     @staticmethod
     def create_from_line(line, delimiter='\t'):
+        if not line or line.strip() == '':
+            return None
+
         values = line.strip().split(delimiter)
         description = (base64
                        .b64decode(values[3].strip().encode('utf-8'))

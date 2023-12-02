@@ -59,6 +59,9 @@ class User:
 
     @staticmethod
     def create_from_line(line, delimiter='\t'):
+        if not line or line.strip() == '':
+            return None
+
         values = line.strip().split(delimiter)
 
         return User(
