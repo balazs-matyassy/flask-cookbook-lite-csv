@@ -32,10 +32,13 @@ def create():
     form = EntityForm(recipe)
 
     if form.validate_on_submit():
-        RecipeRepository.save(recipe)
-        flash('Recipe created.')
+        try:
+            RecipeRepository.save(recipe)
+            flash('Recipe created.')
 
-        return redirect(url_for('recipes.list_all'))
+            return redirect(url_for('recipes.list_all'))
+        except Exception as err:
+            flash(str(err))
 
     return render_template('recipes/form.html', form=form)
 
@@ -47,10 +50,13 @@ def edit(recipe_id):
     form = EntityForm(recipe)
 
     if form.validate_on_submit():
-        RecipeRepository.save(recipe)
-        flash('Recipe saved.')
+        try:
+            RecipeRepository.save(recipe)
+            flash('Recipe saved.')
 
-        return redirect(url_for('recipes.edit', recipe_id=recipe.recipe_id))
+            return redirect(url_for('recipes.edit', recipe_id=recipe.recipe_id))
+        except Exception as err:
+            flash(str(err))
 
     return render_template('recipes/form.html', form=form)
 
@@ -59,7 +65,11 @@ def edit(recipe_id):
 @has_admin_role
 def delete(recipe_id):
     RecipeRepository.find_by_id(recipe_id) or abort(404)
-    RecipeRepository.delete_by_id(recipe_id)
-    flash('Recipe deleted.')
+
+    try:
+        RecipeRepository.delete_by_id(recipe_id)
+        flash('Recipe deleted.')
+    except Exception as err:
+        flash(str(err))
 
     return redirect(url_for('recipes.list_all'))
