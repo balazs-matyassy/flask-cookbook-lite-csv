@@ -81,7 +81,7 @@ class UserRepository:
         with open(get_path('users.txt'), 'w', encoding='utf-8') as file:
             delimiter = get_delimiter()
 
-            file.write(f'id{delimiter}username{delimiter}digest{delimiter}role\n')
+            file.write(f'id{delimiter}username{delimiter}password{delimiter}role\n')
 
             for user in sorted(users, key=lambda item: f'{item.role}\0{item.username}'):
                 file.write(f'{user.to_line(delimiter)}\n')
