@@ -35,10 +35,10 @@ class User:
     def check_password(self, password):
         return check_password_hash(self.digest, password)
 
-    def update(self, form):
-        self.username = (form.get('username') or '').strip().lower()
-        self.password = form.get('password') or ''
-        self.admin = (form.get('role') or '').strip().lower() == 'admin'
+    def update(self, data):
+        self.username = (data.get('username') or '').strip().lower()
+        self.password = data.get('password') or ''
+        self.admin = (data.get('role') or '').strip().lower() == 'admin'
 
     def validate(self):
         errors = []

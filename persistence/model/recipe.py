@@ -28,13 +28,13 @@ class Recipe:
 
         return 'Unknown'
 
-    def update(self, form):
-        self.category = (form.get('category') or '').strip().capitalize()
-        self.name = (form.get('name') or '').strip().capitalize()
-        self.description = (form.get('description') or '').strip()
+    def update(self, data):
+        self.category = (data.get('category') or '').strip().capitalize()
+        self.name = (data.get('name') or '').strip().capitalize()
+        self.description = (data.get('description') or '').strip()
 
         try:
-            self.difficulty = int(form.get('difficulty') or 1)
+            self.difficulty = int(data.get('difficulty') or 1)
 
             if self.difficulty < 1:
                 self.difficulty = 1
