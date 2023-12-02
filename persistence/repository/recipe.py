@@ -11,9 +11,9 @@ class RecipeRepository:
     def find_all():
         with open(get_path('recipes.txt'), encoding='utf-8') as file:
             delimiter = get_delimiter()
-            recipes = []
-
             file.readline()  # header
+
+            recipes = []
 
             for line in file:
                 recipe = Recipe.create_from_line(line, delimiter)

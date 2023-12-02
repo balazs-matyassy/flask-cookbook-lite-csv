@@ -11,9 +11,9 @@ class UserRepository:
     def find_all():
         with open(get_path('users.txt'), encoding='utf-8') as file:
             delimiter = get_delimiter()
-            users = []
-
             file.readline()  # header
+
+            users = []
 
             for line in file:
                 user = User.create_from_line(line, delimiter)
